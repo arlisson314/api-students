@@ -1,2 +1,2 @@
 # api-students
-API to 'Go lang do Zero' estudents
+API to manage 'Go lang do Zero' estudents
