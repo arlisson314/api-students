@@ -29,7 +29,16 @@ func Init() *gorm.DB {
 	return db
 }
 
-func AddStudent(student Student) error {
+func GetStudents() ([]Student, error) {
+	db := Init()
+	var students []Student
+	if err := db.Find(&students).Error; err != nil {
+		return nil, err
+	}
+	return students, nil
+}
+
+func CreateStudent(student Student) error {
 	db := Init()
 
 	if result := db.Create(&student); result.Error != nil {
@@ -38,3 +47,12 @@ func AddStudent(student Student) error {
 	fmt.Println("Student created sucessfuly")
 	return nil
 }
+
+// func GetStudentbyID(id string) (*Student, error) {
+// 	db.Init()
+// 	var student Student
+// 	if err := db.Fist(&student, "id = ?", id).Error; err != nil {
+// 		return err
+// 	}
+// 	return &student, nil
+// }

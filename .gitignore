@@ -1,0 +1,12 @@
+# Ignorar binários
+main
+*.exe
+*.out
+
+# Ignorar pasta temporária gerada pelo air ou builds
+/tmp/
+tmp/
+*.log
+
+# Ignorar bancos locais
+*.db
