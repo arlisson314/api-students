@@ -42,7 +42,9 @@ func createStudent(c echo.Context) error {
 	if err := c.Bind(&student); err != nil {
 		return err
 	}
-	db.AddStudent(student)
+	if err := db.AddStudent(student); err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Failed to create student"})
+	}
 	return c.String(http.StatusCreated, "Student created successfully\n")
 }
 
