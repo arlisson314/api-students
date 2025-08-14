@@ -18,8 +18,8 @@ type API struct {
 func NewServer() *API {
 	// Echo instance
 	e := echo.New()
-	database := db.Init()
-	studentDB := db.NewStudentHandler(database)
+	databaseInit := db.Init()
+	database := db.NewStudentHandler(databaseInit)
 
 	// Middleware
 	e.Use(middleware.Logger())
@@ -27,7 +27,7 @@ func NewServer() *API {
 
 	return &API{
 		Echo: e,
-		DB:   studentDB,
+		DB:   database,
 	}
 }
 
